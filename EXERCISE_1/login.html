@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - Simple Node Server</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function validateLogin(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      let error = '';
+      if (!username) {
+        error += 'Username is required. ';
+      }
+      if (!email) {
+        error += 'Email is required. ';
+      } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+        error += 'Please enter a valid email address. ';
+      }
+      if (!password) {
+        error += 'Password is required. ';
+      }
+      if (password.length > 0 && password.length < 6) {
+        error += 'Password must be at least 6 characters.';
+      }
+      const errorDiv = document.getElementById('error');
+      if (error) {
+        errorDiv.textContent = error;
+        errorDiv.style.display = 'block';
+      } else {
+        errorDiv.style.display = 'none';
+        alert('Login successful (client-side only)!');
+      }
+    }
+  </script>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="register.html">Register</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h1>Login</h1>
+    <form onsubmit="validateLogin(event)">
+      <div id="error" style="color: #d72660; display: none; margin-bottom: 1rem;"></div>
+      <label for="username">Username:</label><br>
+      <input type="text" id="username" name="username" required><br><br>
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" name="password" required><br><br>
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="register.html">Register here</a>.</p>
+  </main>
+  <footer>
+    <p>&copy; 2025 Simple Node Server. All rights reserved.</p>
+  </footer>
+</body>
+</html>
