@@ -1,0 +1,17 @@
+<h2>Submitted Users</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th><th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each users}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.email}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<a href="/">← Back to form</a>
