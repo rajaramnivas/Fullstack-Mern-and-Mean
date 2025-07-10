@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    h1 {
+      color: #2c3e50;
+      margin-top: 40px;
+    }
+    form {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(44,62,80,0.1);
+      margin-top: 20px;
+      min-width: 320px;
+    }
+    input[type="text"], input[type="email"], input[type="number"] {
+      width: 100%;
+      padding: 8px 10px;
+      margin: 8px 0 16px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    button {
+      background: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #217dbb;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      color: #3498db;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #217dbb;
+    }
+  </style>
+</head>
+<body>
+  <h1><%= student ? 'Edit Student' : 'Add Student' %></h1>
+  <form method="POST" action="<%= student ? '/update/' + student._id : '/add' %>">
+    Name: <input name="name" type="text" value="<%= student ? student.name : '' %>" required /><br/>
+    Email: <input name="email" type="email" value="<%= student ? student.email : '' %>" required /><br/>
+    Age: <input name="age" type="number" value="<%= student ? student.age : '' %>" required /><br/>
+    Department: <input name="department" type="text" value="<%= student ? student.department : '' %>" required /><br/>
+    <button type="submit"><%= student ? 'Update' : 'Add' %></button>
+  </form>
+  <a href="/students">View All Students</a>
+</body>
+</html>
