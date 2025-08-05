@@ -13,9 +13,9 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 // View Engine Setup
-app.engine('hbs', exphbs.engine({ extname: '.hbs', defaultLayout: 'main', layoutsDir: path.join(__dirname, 'views', 'layouts') }));
+app.engine('hbs', exphbs.engine({ extname: '.hbs' }));
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', './views');
 
 // Routes
 app.get('/', (req, res) => {
